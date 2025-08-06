@@ -39,9 +39,10 @@ from customer_rn
 group by customerid, recency, frequency, monetary, rn_recency, rn_frequency, rn_monetary)
 select *, concat(r, f, m) as customer_grade,
 case 
-when R >= 3 and F >= 3 and M >= 3 then 'Khách hàng VIP'
-when R >= 2 and F >= 3 then 'Khách hàng thân thiết'
-when R >= 3 then 'Khách hàng mới đến'
-when R = 1 and F <= 2 and M <= 2 then 'Khách hàng vãng lai'
-ELSE 'Khác' end as segmentation
+	when R >= 3 and F >= 3 and M >= 3 then 'Khách hàng VIP'
+	when R >= 2 and F >= 3 then 'Khách hàng thân thiết'
+	when R >= 3 then 'Khách hàng mới đến'
+	when R = 1 and F <= 2 and M <= 2 then 'Khách hàng vãng lai'
+else 'Khác' end as segmentation
 from customer_value
+
